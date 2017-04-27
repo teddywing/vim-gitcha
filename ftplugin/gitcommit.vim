@@ -30,12 +30,4 @@ function! StartGitSHACompletion()
 	let &completefunc = old_completefunc
 endfunction
 
-function! ASDF()
-	return "\<C-p>"
-endfunction
-
-" inoremap <expr> <C-x><C-s> StartGitSHACompletion()
-" inoremap <C-x><C-s> <C-r>=StartGitSHACompletion()<CR>
 inoremap <expr> <C-x><C-s> StartGitSHACompletion()
-
-inoremap <C-v> <C-r>=ASDF()<CR>
