@@ -9,13 +9,16 @@ function! GitSHAComplete(findstart, base)
 		return start
 	endif
 
-	    " find months matching with "a:base"
-	    let res = []
-	    for m in split("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec")
-	      if m =~ '^' . a:base
-		call add(res, m)
-	      endif
-	    endfor
-	    return res
+	" Match Git SHAs in the current repository
+	let matches = []
+	let revs = system('git rev-list --all')
+	for m in split(revs)
+		if m =~ '^' . a:base
+			call add(matches, m)
+		endif
+	endfor
+
+	return matches
 endfunction
+
 set completefunc=GitSHAComplete
