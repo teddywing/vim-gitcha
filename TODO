@@ -1,0 +1,10 @@
+TODO
+
+2017.04.27:
+- Move function to autoload
+- Make mapping user-editable
+- Add README
+- Add license
+- Add docs
+- Add if-loaded ceremony
+- Check to see if this conflicts with existing gitcommit ftplugins
