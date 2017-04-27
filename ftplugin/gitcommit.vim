@@ -21,4 +21,21 @@ function! GitSHAComplete(findstart, base)
 	return matches
 endfunction
 
-set completefunc=GitSHAComplete
+function! StartGitSHACompletion()
+	let old_completefunc = &completefunc
+
+	set completefunc=GitSHAComplete
+	return "\<C-x>\<C-u>"
+
+	let &completefunc = old_completefunc
+endfunction
+
+function! ASDF()
+	return "\<C-p>"
+endfunction
+
+" inoremap <expr> <C-x><C-s> StartGitSHACompletion()
+" inoremap <C-x><C-s> <C-r>=StartGitSHACompletion()<CR>
+inoremap <expr> <C-x><C-s> StartGitSHACompletion()
+
+inoremap <C-v> <C-r>=ASDF()<CR>
