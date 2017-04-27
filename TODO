@@ -8,3 +8,5 @@ TODO
 - Add docs
 - Add if-loaded ceremony
 - Check to see if this conflicts with existing gitcommit ftplugins
+- Include the commit header in the "extra text" of the popup menu (see
+  :h complete-items)
