@@ -1,3 +1,5 @@
+let s:old_completefunc = &completefunc
+
 function! GitSHAComplete(findstart, base)
 	if a:findstart
 		" locate the start of the word
@@ -8,6 +10,9 @@ function! GitSHAComplete(findstart, base)
 		endwhile
 		return start
 	endif
+
+	" Restore user completion function
+	let &completefunc = s:old_completefunc
 
 	" Match Git SHAs in the current repository
 	let matches = []
@@ -22,12 +27,8 @@ function! GitSHAComplete(findstart, base)
 endfunction
 
 function! StartGitSHACompletion()
-	let old_completefunc = &completefunc
-
 	set completefunc=GitSHAComplete
 	return "\<C-x>\<C-u>"
-
-	let &completefunc = old_completefunc
 endfunction
 
 inoremap <expr> <C-x><C-s> StartGitSHACompletion()
