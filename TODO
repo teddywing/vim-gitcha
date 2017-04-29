@@ -8,8 +8,8 @@ v Move function to autoload (2017.04.29)
 - Add docs
 - Add if-loaded ceremony
 v Check to see if this conflicts with existing gitcommit ftplugins (2017.04.29)
-- Include the commit header in the "extra text" of the popup menu (see
-  :h complete-items)
+v Include the commit header in the "extra text" of the popup menu (see
+  :h complete-items) (2017.04.29)
 
 2017.04.29:
 - Fix matcher
