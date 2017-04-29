@@ -6,7 +6,7 @@ v Make mapping user-editable (2017.04.29)
 v Add README (2017.04.29)
 v Add license (2017.04.29)
 v Add docs (2017.04.29)
-- Add if-loaded ceremony
+v Add if-loaded ceremony (2017.04.29)
 v Check to see if this conflicts with existing gitcommit ftplugins (2017.04.29)
 v Include the commit header in the "extra text" of the popup menu (see
   :h complete-items) (2017.04.29)
