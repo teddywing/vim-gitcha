@@ -1,0 +1,41 @@
+*gitcha.txt*  Completion for Git SHAs in commit messages
+
+Author:  Teddy Wing <http://teddywing.com>
+License: GPLv3+
+Version: 0.0.1
+
+==============================================================================
+INTRODUCTION                                                          *gitcha*
+
+A custom completion function that enables Git commit SHAs to be completed when
+writing commit messages.
+
+==============================================================================
+MAPPINGS                                                     *gitcha-mappings*
+
+				*gitcha-<Plug>GitchaCompleteSHA*
+<Plug>GitchaCompleteSHA
+	Complete the Git commit SHA under the cursor.
+
+	Default: <C-x><C-s>
+
+
+==============================================================================
+LICENSE                                                       *gitcha-license*
+
+Copyright (c) 2017 Teddy Wing
+
+Vim-gitcha is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Vim-gitcha is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Vim-gitcha If not, see <http://www.gnu.org/licenses/>.
+
+ vim:tw=78:ts=8:ft=help:norl:

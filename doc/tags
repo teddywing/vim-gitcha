@@ -1,0 +1,5 @@
+gitcha	gitcha.txt	/*gitcha*
+gitcha-<Plug>GitchaCompleteSHA	gitcha.txt	/*gitcha-<Plug>GitchaCompleteSHA*
+gitcha-license	gitcha.txt	/*gitcha-license*
+gitcha-mappings	gitcha.txt	/*gitcha-mappings*
+gitcha.txt	gitcha.txt	/*gitcha.txt*
