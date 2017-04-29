@@ -1,5 +1,8 @@
+" Save user-defined completefunc so it can be restored after running this
+" custom completion function
 let s:old_completefunc = &completefunc
 
+" Completion for Git SHAs in the current repository
 function! gitcha#GitSHAComplete(findstart, base)
 	if a:findstart
 		" locate the start of the word
@@ -26,6 +29,7 @@ function! gitcha#GitSHAComplete(findstart, base)
 	return matches
 endfunction
 
+" Allow mappings to initiate completion
 function! gitcha#StartGitSHACompletion()
 	set completefunc=gitcha#GitSHAComplete
 	return "\<C-x>\<C-u>"
