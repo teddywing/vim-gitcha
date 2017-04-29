@@ -46,6 +46,7 @@ function! s:BuildMatchDictionary(rev_list)
 
 		call add(matches, {
 			\ 'word': sha,
+			\ 'abbr': strpart(sha, 0, 10),
 			\ 'menu': subject
 		\ })
 	endfor
