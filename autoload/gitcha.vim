@@ -8,7 +8,7 @@ function! gitcha#GitSHAComplete(findstart, base)
 		" locate the start of the word
 		let line = getline('.')
 		let start = col('.') - 1
-		while start > 0 && line[start - 1] =~ '\a'
+		while start > 0 && line[start - 1] =~ '[0-9a-f]'
 			let start -= 1
 		endwhile
 		return start
