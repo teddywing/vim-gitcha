@@ -12,4 +12,4 @@ v Include the commit header in the "extra text" of the popup menu (see
   :h complete-items) (2017.04.29)
 
 2017.04.29:
-- Fix matcher
+v Fix matcher (2017.04.29)
