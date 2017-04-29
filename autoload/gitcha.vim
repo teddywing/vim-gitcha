@@ -40,9 +40,9 @@ function! s:BuildMatchDictionary(rev_list)
 	let commits = split(a:rev_list, '\n')
 
 	for commit in commits
-		let commit_parts = split(commit)
-		let sha = commit_parts[0]
-		let subject = commit_parts[1]
+		let separator = stridx(commit, ' ')
+		let sha = strpart(commit, 0, separator)
+		let subject = strpart(commit, separator + 1)
 
 		call add(matches, {
 			\ 'word': sha,
