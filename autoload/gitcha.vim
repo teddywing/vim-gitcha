@@ -19,11 +19,35 @@ function! gitcha#GitSHAComplete(findstart, base)
 
 	" Match Git SHAs in the current repository
 	let matches = []
-	let revs = system('git rev-list --all')
-	for m in split(revs)
-		if m =~ '^' . a:base
+	let revs = system('git rev-list --all --pretty=oneline --no-abbrev-commit')
+
+	for m in s:BuildMatchDictionary(revs)
+		if m['word'] =~ '^' . a:base
 			call add(matches, m)
 		endif
+	endfor
+
+	return matches
+endfunction
+
+" Takes rev-list output from:
+"   $ git rev-list --all --pretty=oneline --no-abbrev-commit
+"
+" Creates a dictionary to be used for matching that uses commit SHAs for the
+" completion word and the commit subject as extra text.
+function! s:BuildMatchDictionary(rev_list)
+	let matches = []
+	let commits = split(a:rev_list, '\n')
+
+	for commit in commits
+		let commit_parts = split(commit)
+		let sha = commit_parts[0]
+		let subject = commit_parts[1]
+
+		call add(matches, {
+			\ 'word': sha,
+			\ 'menu': subject
+		\ })
 	endfor
 
 	return matches
