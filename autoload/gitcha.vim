@@ -1,6 +1,7 @@
 " Save user-defined completefunc so it can be restored after running this
 " custom completion function
 let s:old_completefunc = &completefunc
+let s:old_completeopt = &completeopt
 
 " Completion for Git SHAs in the current repository
 function! gitcha#GitSHAComplete(findstart, base)
@@ -16,6 +17,7 @@ function! gitcha#GitSHAComplete(findstart, base)
 
 	" Restore user completion function
 	let &completefunc = s:old_completefunc
+	" let &completeopt = s:old_completeopt
 
 	" Match Git SHAs in the current repository
 	let matches = []
@@ -57,5 +59,6 @@ endfunction
 " Allow mappings to initiate completion
 function! gitcha#StartGitSHACompletion()
 	set completefunc=gitcha#GitSHAComplete
+	set completeopt=menu,menuone,preview
 	return "\<C-x>\<C-u>"
 endfunction
