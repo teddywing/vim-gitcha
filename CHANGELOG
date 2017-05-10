@@ -1,5 +1,10 @@
 CHANGELOG
 =========
 
+v0.0.2 (2017-05-10):
+	* Display the completion popup menu even when there is only a single
+	  match. This allows users to read the commit message subject for added
+	  confirmation.
+
 v0.0.1 (2017-04-29):
 	* Initial release.
