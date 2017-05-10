@@ -4,32 +4,36 @@ let s:old_completefunc = &completefunc
 let s:old_completeopt = &completeopt
 
 " Completion for Git SHAs in the current repository
-function! gitcha#GitSHAComplete(findstart, base)
-	if a:findstart
+function! gitcha#GitSHAComplete()
+	" if a:findstart
 		" locate the start of the word
 		let line = getline('.')
-		let start = col('.') - 1
-		while start > 0 && line[start - 1] =~ '[0-9a-f]'
+		let start = col('.')
+		while start > 0 && line[start - 2] =~ '[0-9a-f]'
 			let start -= 1
 		endwhile
-		return start
-	endif
-
-	" Restore user completion function
-	let &completefunc = s:old_completefunc
-	" let &completeopt = s:old_completeopt
+		" return start
+	" endif
 
 	" Match Git SHAs in the current repository
 	let matches = []
 	let revs = system('git rev-list --all --pretty=oneline --no-abbrev-commit')
+	let base = line[start - 1 : col('.') - 1]
 
 	for m in s:BuildMatchDictionary(revs)
-		if m['word'] =~ '^' . a:base
+		if m['word'] =~ '^' . base
 			call add(matches, m)
 		endif
 	endfor
 
-	return matches
+	" echom start
+	" echom string(matches)
+	" let &completeopt = 'menu,pattern,menuone'
+	set completeopt=menu,menuone,preview
+	call complete(start, matches)
+	" call complete(col('.'), matches)
+	let &completeopt = s:old_completeopt
+	return ''
 endfunction
 
 " Takes rev-list output from:
@@ -58,7 +62,9 @@ endfunction
 
 " Allow mappings to initiate completion
 function! gitcha#StartGitSHACompletion()
-	set completefunc=gitcha#GitSHAComplete
-	set completeopt=menu,menuone,preview
-	return "\<C-x>\<C-u>"
+	" call gitcha#GitSHAComplete()
+	" return ''
+	" set completefunc=gitcha#GitSHAComplete
+	" set completeopt=menu,menuone,preview
+	" return "\<C-x>\<C-u>"
 endfunction
