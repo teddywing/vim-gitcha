@@ -12,6 +12,6 @@ if !hasmapto('<Plug>GitchaCompleteSHA')
 	imap <buffer> <C-x><C-s> <Plug>GitchaCompleteSHA
 endif
 
-inoremap <buffer> <expr> <Plug>GitchaCompleteSHA gitcha#StartGitSHACompletion()
+inoremap <buffer> <Plug>GitchaCompleteSHA <C-r>=gitcha#GitSHAComplete()<CR>
 
 let b:undo_ftplugin = 'iunmap <buffer> <C-x><C-s>'
