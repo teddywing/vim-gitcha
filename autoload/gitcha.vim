@@ -1,19 +1,14 @@
-" Save user-defined completefunc so it can be restored after running this
+" Save user-defined 'completeopt's so they can be restored after running this
 " custom completion function
-let s:old_completefunc = &completefunc
 let s:old_completeopt = &completeopt
 
 " Completion for Git SHAs in the current repository
 function! gitcha#GitSHAComplete()
-	" if a:findstart
-		" locate the start of the word
-		let line = getline('.')
-		let start = col('.')
-		while start > 0 && line[start - 2] =~ '[0-9a-f]'
-			let start -= 1
-		endwhile
-		" return start
-	" endif
+	let line = getline('.')
+	let start = col('.')
+	while start > 0 && line[start - 2] =~ '[0-9a-f]'
+		let start -= 1
+	endwhile
 
 	" Match Git SHAs in the current repository
 	let matches = []
@@ -26,13 +21,12 @@ function! gitcha#GitSHAComplete()
 		endif
 	endfor
 
-	" echom start
-	" echom string(matches)
-	" let &completeopt = 'menu,pattern,menuone'
 	set completeopt=menu,menuone,preview
+
 	call complete(start, matches)
-	" call complete(col('.'), matches)
+
 	let &completeopt = s:old_completeopt
+
 	return ''
 endfunction
 
@@ -58,13 +52,4 @@ function! s:BuildMatchDictionary(rev_list)
 	endfor
 
 	return matches
-endfunction
-
-" Allow mappings to initiate completion
-function! gitcha#StartGitSHACompletion()
-	" call gitcha#GitSHAComplete()
-	" return ''
-	" set completefunc=gitcha#GitSHAComplete
-	" set completeopt=menu,menuone,preview
-	" return "\<C-x>\<C-u>"
 endfunction
